@@ -1,40 +1,69 @@
-# Define a main function that prints "Greetings!" to the console
-def main():
-    print("Greetings!")
+"""
+Determine the Compound Annual Growth Rate for an investment
+"""
 
-# Define a main function that accepts a string argument
-def main(stock_ticker):
-    print(stock_ticker + " is booming right now!")
+# Declare a variable beginning_balance as a float
+beginning_balance = 29000.00
 
-# Define a calculate_market_cap function that returns an integer
-def calculate_market_cap(market_price, number_of_shares):
-    cap = market_price * number_of_shares
+# Declare a variable ending_balance as float
+ending_balance = 45000.10
 
-    return cap
+# Declare a variable years as an int
+years = 1.0
 
-# Define a calculate_market_cap function, and then call it
-def calculate_market_cap(market_price, number_of_shares):
-    cap = market_price * number_of_shares
+# Define a function called calculate_compound_growth_rate with three arguments: beginning_balance, ending_balance, years. Function should output growth_rate.
+def calculate_compound_growth_rate(beginning_balance, ending_balance, years):
+    growth_rate = (ending_balance / beginning_balance)**(1/years) - 1
+    return growth_rate
 
-    return cap
+# Call calculate_compound_growth_rate using beginning_balance, ending_balance, and years. Capture as year_one_growth.
+year_one_growth = calculate_compound_growth_rate(beginning_balance, ending_balance, years)
 
-stock_ticker = "SBUX"
-market_price = 76.06
-number_of_shares = 1243600000
+# Update beginning_balance and ending balance for year two, and then execute calculate_compound_growth_rate and capture as year_two_growth.
+beginning_balance = 45000.10
+ending_balance = 47000.00
+year_two_growth = calculate_compound_growth_rate(beginning_balance, ending_balance, years)
 
-market_cap = calculate_market_cap(market_price, number_of_shares)
-print(f"{stock_ticker} Market Capitalization: {market_cap}")
-print(f"Data type of market_cap variable is: {type(market_cap)}")
+# Update beginning_balance and ending balance for year three, and then execute calculate_compound_growth_rate and capture as year_three_growth.
+beginning_balance = 47000.00
+ending_balance = 48930.00
+year_three_growth = calculate_compound_growth_rate(beginning_balance, ending_balance, years)
 
-# Capture function output and print output value and data type
-def calculate_market_cap(market_price, number_of_shares):
-    cap = market_price * number_of_shares
+# Use round function to round variables
+year_one_growth_rnd = round(year_one_growth,2)
+year_two_growth_rnd = round(year_two_growth,2)
+year_three_growth_rnd = round(year_three_growth,2)
 
-    return cap
+print(f"Compound Annual Growth Rate for 2016: {year_one_growth_rnd}%")
+print(f"Compound Annual Growth Rate for 2016: {year_two_growth_rnd}%")
+print(f"Compound Annual Growth Rate for 2016: {year_three_growth_rnd}%")
 
-market_price = 76.06
-number_of_shares = 1243600000
+# Challenge
 
-market_cap = calculate_market_cap(market_price, number_of_shares)
-print(f"Market Capitalization: {market_cap}")
-print(f"Data type of market_cap variable is: {type(market_cap)}")
+# Create a global, empty list
+growth_rates = list()
+
+# Define a function called
+def calculate_compound_growth_rate_list(beginning_balance, ending_balance, years):
+    growth_rate = (ending_balance / beginning_balance)**(1/years) - 1
+
+    # Populate growth_rates
+    growth_rates.append(growth_rate)
+
+# Populate growth_rates list with 2016 values by calling calculate_compound_growth_rate_list.
+beginning_balance = 29000.00
+ending_balance = 45000.10
+calculate_compound_growth_rate_list(beginning_balance, ending_balance, years)
+
+# Populate growth_rates list with 2017 values by calling calculate_compound_growth_rate_list.
+beginning_balance = 45000.10
+ending_balance = 47000.00
+calculate_compound_growth_rate_list(beginning_balance, ending_balance, years)
+
+# Populate growth_rates list with 2018 values by calling calculate_compound_growth_rate_list.
+beginning_balance = 47000.00
+ending_balance = 48930.00
+calculate_compound_growth_rate_list(beginning_balance, ending_balance, years)
+
+# Print growth_rates list
+print("Growth rates: ", growth_rates)
